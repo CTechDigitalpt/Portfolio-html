@@ -1,0 +1,249 @@
+:root {
+  --dark-bg-color: #181818;
+  --dark-accent-color: #0CF57E;
+  --dark-text-color: #FFFFFF;
+
+  --light-bg-color: #FFFFFF;
+  --light-accent-color: #0CF57E;
+  --light-text-color: #181818;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+}
+
+body.light-mode {
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+}
+
+header, footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.project {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+    align-items: center;
+    border-bottom: 1px solid #333; /* Default for dark mode */
+    padding-bottom: 2rem;
+}
+
+/* More specific selectors for Project 1 layout */
+.project:not(.project-reverse) .image-container {
+    order: 1;
+    margin-right: 2rem;
+    margin-left: 0;
+}
+
+.project:not(.project-reverse) .description {
+    order: 2;
+}
+
+/* Explicit rules for Project 2 reversed layout */
+.project.project-reverse {
+    display: flex;
+    flex-direction: row; /* Keep row, we'll use order instead */
+}
+
+.project.project-reverse .description {
+    order: 1; /* Put description first */
+    margin-right: 2rem;
+}
+
+.project.project-reverse .image-container {
+    order: 2; /* Put image second */
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.project .image-container {
+    flex: 0 0 40%;
+    margin-right: 2rem;
+}
+
+.project .description {
+    flex: 0 0 55%;
+}
+
+.project .description h2 {
+    color: var(--dark-accent-color); /* Default for dark mode */
+}
+
+.project .description p {
+    font-size: 1rem;
+}
+
+body.light-mode .project {
+    border-bottom: 1px solid #e0e0e0; /* Adjusted for light mode */
+}
+
+body.light-mode .project .description h2 {
+    color: var(--light-accent-color); /* Adjusted for light mode */
+}
+
+.image-container {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--dark-accent-color);
+    padding: 1rem;
+    margin-right: 2rem;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+body.light-mode .image-container {
+    border: 2px solid var(--light-accent-color);
+}
+
+/* Project with reversed layout (image right, description left) */
+.project-reverse {
+    flex-direction: row-reverse;
+}
+
+.project-reverse .image-container {
+    margin-right: 0;
+    margin-left: 2rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .project, .project.project-reverse {
+        flex-direction: column;
+    }
+
+    .project .image-container, 
+    .project.project-reverse .image-container,
+    .project .description, 
+    .project.project-reverse .description {
+        order: unset; /* Reset the order on mobile */
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #footer {
+        flex-direction: column;
+        padding: 15px 5px;
+    }
+}
+
+button {
+    background-color: var(--dark-accent-color);
+    color: var(--dark-bg-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2dfb97; /* Lighter version of accent color */
+}
+
+.toggle-theme-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 2px solid var(--dark-accent-color);
+    color: var(--dark-accent-color);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+body.light-mode .toggle-theme-btn {
+    border: 2px solid var(--light-accent-color);
+    color: var(--light-accent-color);
+}
+
+body.light-mode .toggle-theme-btn:hover {
+    background-color: #2dfb97; /* Lighter version of accent color */
+    color: var(--light-text-color);
+}
+
+body.dark-mode .toggle-theme-btn:hover {
+    background-color: #2dfb97; /* Lighter version of accent color */
+    color: var(--dark-bg-color);
+}
+
+.theme-toggle-active {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.theme-icon {
+    margin-right: 5px;
+    font-style: normal;
+}
+
+/* Footer styles */
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#footer a {
+    color: #4CAF50;  
+    text-decoration: none;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-logo {
+    height: 24px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.social-icon {
+    height: 18px;
+    width: auto;
+    vertical-align: middle;
+    margin: 0 4px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 3px;
+}
+
+#footer p {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
