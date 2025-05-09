@@ -1,2 +1,2 @@
-# Portfolio-html
-Styled HTMl CSS JS Portfolio Page to showcase some work
+# CTech Digital Portfolio
+A GitHub Pages site to showcase Python projects.
